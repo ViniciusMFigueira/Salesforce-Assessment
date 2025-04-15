@@ -1,0 +1,39 @@
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<!--  Apex Classes  -->
+<types>
+<members>MilestoneService</members>
+<members>MilestoneTriggerHandler</members>
+<members>ProjectManagerController</members>
+<members>ToDoTriggerHandler</members>
+<members>Test_MilestoneService</members>
+<members>Test_MilestoneTriggerHandler</members>
+<members>Test_ProjectManagerController</members>
+<members>Test_ToDoTriggerHandler</members>
+<name>ApexClass</name>
+</types>
+<!--  Apex Triggers  -->
+<types>
+<members>MilestoneTrigger</members>
+<members>ToDoTrigger</members>
+<name>ApexTrigger</name>
+</types>
+<!--  Lightning Web Components  -->
+<types>
+<members>projectManager</members>
+<members>milestoneInput</members>
+<name>LightningComponentBundle</name>
+</types>
+<!--  Custom Objects  -->
+<types>
+<members>Project__c</members>
+<members>Milestone__c</members>
+<members>To_Do__c</members>
+<name>CustomObject</name>
+</types>
+<!--  Permission Sets  -->
+<types>
+<members>ProjectAppAccess</members>
+<name>PermissionSet</name>
+</types>
+<version>59.0</version>
+</Package>

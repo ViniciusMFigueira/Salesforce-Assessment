@@ -1,0 +1,31 @@
+<template>
+    <div class="slds-box slds-m-vertical_small">
+        <lightning-input label="Milestone Name" value={milestone.name} onchange={handleNameChange}></lightning-input>
+
+        <template for:each={milestone.todos} for:item="todo" for:index="index">
+            <div key={todo.id} class="slds-grid slds-gutters slds-m-top_x-small">
+                <div class="slds-col">
+                    <lightning-input label="To-Do Name" value={todo.name} data-index={index} onchange={handleTodoNameChange}></lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox
+                        label="Status"
+                        value={todo.status}
+                        options={statusOptions}
+                        data-index={index}
+                        onchange={handleTodoStatusChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-align-bottom">
+                    <lightning-button-icon icon-name="utility:delete" alternative-text="Remove" onclick={removeTodo} data-index={index}></lightning-button-icon>
+                </div>
+            </div>
+        </template>
+
+        <!-- Add To-Do Button -->
+        <lightning-button variant="neutral" label="Add To-Do" onclick={addTodo} class="slds-m-top_small"></lightning-button>
+
+        <!-- Remove Milestone Button -->
+        <lightning-button variant="destructive" label="Remove Milestone" onclick={removeMilestone} class="slds-m-left_small slds-m-top_small"></lightning-button>
+    </div>
+</template>

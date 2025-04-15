@@ -1,0 +1,27 @@
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Milestone</label>
+    <pluralLabel>Milestones</pluralLabel>
+    <nameField>
+    <label>Name</label>
+    <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+    <fullName>Project__c</fullName>
+    <label>Project</label>
+    <type>MasterDetail</type>
+    <referenceTo>Project__c</referenceTo>
+    <relationshipLabel>Project</relationshipLabel>
+    <relationshipName>Project</relationshipName>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+    <fullName>Percent_Complete__c</fullName>
+    <label>Percent Complete</label>
+    <type>Percent</type>
+    <precision>2</precision>
+    <scale>2</scale>
+    </fields>
+    </CustomObject>

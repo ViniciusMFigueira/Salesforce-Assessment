@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Create Project" icon-name="standard:project">
+        <div class="slds-p-horizontal_medium">
+            <!-- Project Name Input -->
+            <lightning-input label="Project Name" value={projectName} onchange={handleProjectNameChange}></lightning-input>
+
+            <!-- Dynamic Milestone Inputs -->
+            <template for:each={milestones} for:item="ms" for:index="index">
+                <c-milestone-input key={ms.id} index={index} milestone={ms} 
+                    onmilestonechange={handleMilestoneChange} 
+                    onremovemilestone={removeMilestone}>
+                </c-milestone-input>
+            </template>
+
+            <!-- Add Milestone Button -->
+            <lightning-button label="Add Milestone" variant="neutral" onclick={addMilestone} class="slds-m-top_medium"></lightning-button>
+
+            <!-- Submit Button -->
+            <lightning-button label="Create Project" variant="brand" onclick={submitProject} class="slds-m-top_medium"></lightning-button>
+        </div>
+    </lightning-card>
+
+    <!-- Overview Section -->
+    <template if:true={projectOverview}>
+        <lightning-card title="Project Overview" icon-name="standard:dashboard">
+            <div class="slds-p-horizontal_medium slds-p-vertical_small">
+                <p><strong>Project:</strong> {projectOverview.Name}</p>
+                <p><strong>Percent Complete:</strong> {projectOverview.Percent_Complete__c}%</p>
+
+                <template for:each={projectOverview.Milestones__r} for:item="ms">
+                    <div key={ms.Id} class="slds-box slds-m-top_small">
+                        <p><strong>Milestone:</strong> {ms.Name} ({ms.Percent_Complete__c}%)</p>
+                        <ul>
+                            <template for:each={ms.To_Dos__r} for:item="td">
+                                <li key={td.Id}>{td.Name} - {td.Status__c}</li>
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>
