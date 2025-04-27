@@ -79,16 +79,16 @@ public with sharing class ProjectManagerController {
     
      //Get project overview: project, milestones, todos
      
-    @AuraEnabled(cacheable=true)
-    public static Project__c getProjectStructure(Id projectId) {
-        return [
-            SELECT Id, Name, Percent_Complete__c,
-                   (SELECT Id, Name, Percent_Complete__c, Status__c,
-                           (SELECT Id, Name, Status__c FROM To_Dos__r)
-                    FROM Milestones__r)
-            FROM Project__c
-            WHERE Id = :projectId
-            LIMIT 1
-        ];
-    }
+     @AuraEnabled(cacheable=true)
+     public static Project__c getProjectStructure(Id projectId) {
+         return [
+             SELECT Id, Name, Percent_Complete__c,
+                    (SELECT Id, Name, Percent_Complete__c, Status__c
+                     FROM Milestones__r)
+             FROM Project__c
+             WHERE Id = :projectId
+             LIMIT 1
+         ];
+     }
+     
 }

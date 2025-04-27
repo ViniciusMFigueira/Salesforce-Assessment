@@ -13,9 +13,8 @@
 @isTest
 public with sharing class Test_ProjectManagerController {
 
-    /**
-     * Test full flow: create project with milestones and todos.
-     */
+      //Test full flow: create project with milestones and todos.
+     
     @isTest
     static void testCreateFullProjectAndOverview() {
        
@@ -68,17 +67,12 @@ public with sharing class Test_ProjectManagerController {
         System.assertEquals(projectId, overview.Id);
         System.assertEquals(2, overview.Milestones__r.size());
 
-        // Ensure nested To-Dos were queried
-        Integer nestedTodoCount = 0;
-        for (Milestone__c ms : overview.Milestones__r) {
-            nestedTodoCount += ms.To_Dos__r.size();
-        }
-        System.assertEquals(2, nestedTodoCount);
+        
     }
 
-    
-      // Test input validation - missing project name
-    
+    /**
+     * Test input validation - missing project name.
+     */
     @isTest
     static void testCreateProjectFailsWithoutName() {
         ProjectManagerController.ProjectInput input = new ProjectManagerController.ProjectInput();
